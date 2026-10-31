@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: faisal-ai
+    runtime: docker
+    healthCheckPath: /health
+    disk:
+      name: faisal-ai-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /app/data
+      - key: TOKEN_ENCRYPTION_KEY
+        generateValue: true
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REDIRECT_URI
+        sync: false
+
